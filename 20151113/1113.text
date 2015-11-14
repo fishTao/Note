@@ -1,0 +1,42 @@
+分支
+git  cat-file  -p commit号 查看全部内容(cat-file  中间没有空格)
+    md5 filename 求哈希值
+    vi HEAD [refs/heads/master(other branch) ]切换分支(当前所在分支)
+    refs/heads 记录分支（在head文件夹里新建文件）
+    git branch  name 创建分支
+    git branch -d branchname 删除分支
+    git branch -D branchname 强制删除
+    git checkout branchname 切换分支
+    git checkout -b branchname 创建并切换到分支
+    git branch 列出分支
+    git merge branchname 合并分支(在某个分支上将其他分支（branchname）合并过来)
+                        分支合并即把两个分支合并到一起，哈希号也变的相同
+                        git branch --merged 列出被合并的分支
+                        git branch --no-merged 列出没有被合并的分支
+                        git rebase branch1 branch2 基于branch1重做branch2（）
+                        git add . —> git rebase --continue 当重衍有冲突时，要继续continue
+                        git rebase -i commit号 交互式重衍(从某个地方开始改变commit号之后的 某个操作的log或者合并等操作)
+    每次提交，用哈希值计算，目录就是tree，文件blob。当第二次提交之后，就有parent指向前一次
+
+
+
+
+    远端操作
+    ping name@IP 测试是否可以远程登录
+    ssh name@IP 远程登录
+    exit 退出远程登录
+
+    git init --bare 初始化成裸仓库(可以允许推入内容,对裸仓库一般都是间接操作，不直接操作，建完之后直接退出)
+    git clone 本地路径 本地克隆操作
+    git clone ssh://name@IP/路径 远程操作
+    git fetch 仓库名 分支名 从远程上下载
+    git merge   origin/master 合并从远程上下载的分支
+    git pull 仓库名  分支名 更新
+    git push 仓库名  分支名 推送
+    git push 仓库名  本地分支:服务器分支
+    git push 仓库名 :服务器分支     删除服务器分支
+    git branch -a  查看远端的分支
+    git co 分支名  也可以切换到远端的分支,最好只做更新用。
+    git remote add 名字 URL 添加一个仓库关联
+
+
