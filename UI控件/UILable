@@ -1,0 +1,60 @@
+UILable
+// 创建lable对象    
+    UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
+//设置显示文本
+    label.text = @"good";
+//设置文本字体
+    label.font = [UIFont fontWithName:@"Zapfino" size:48];
+//设置文本颜色
+    label.textColor = [UIColor whiteColor];
+//设置水平显示位置
+    label.textAlignment = NSTextAlignmentCenter;
+//设置背景颜色
+    label.backgroundColor = [UIColor blackColor];
+//设置单词折行方式，当一行文本过多可通过设置换行显示或者省略显示，
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
+                          NSLineBreakByWordWrapping = 0,     在单词边界处换行，若本行放不下，但是其后没有单词，则本行其后字符（包括数字）都不显示
+                                                                                                      NSLineBreakByCharWrapping          以字符为单位换行，其后数字不显示
+                                                                                                      NSLineBreakByClipping,              截去多余部分
+                                                                                                      NSLineBreakByTruncatingHead       截去头部
+                                                                                                      NSLineBreakByTruncatingTail,     截去尾部
+                                                                                                      NSLineBreakByTruncatingMiddle     截去中间部分
+                                                                             //设置lable是否可以显示多行，0则显示多行，1，2，3则分别控制文本内容最多可以为1，2，3行
+        label.numberOfLines = 0;
+                                                                             // 根据内容大小，动态设置UILable的高度   
+          // 这种方法已经不推荐使用
+        GSize size = [label.text sizeWithFont:label.font constrainedToSize:self.view.bounds.size lineBreakMode:label.lineBreakMode];
+        CGRect rect = label.frame;
+                                                                                    rect.size.height = size.height;
+                                                                                                                                                                   label.frame = rect;
+                                                                                                                                                     
+                                                                              // 设置 label 随父视图的长宽进行变化
+                                                                                                                                                                        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+                                                                                                                                                                        [self.view addSubview:label];
+                                                                                                                                                         // 可以用于自定义控件（UILable子类），实现文本垂直方向位置，
+                                                                                                                                                         // 定义UILable的子类，绘制特殊效果的文本（例如 实现文字重合效果）
+
+                                                                                                                                                         // 使用UILable控件属性adjustsFontSizeToFitWidth设置文本文字自适应大小,此时需要将adjustsFontSizeToFitWidth的值设置为YES。而使用baselineAdjustment控制文本基线位置。当文本只有一行时有效
+                                                                                                                                                                             // 设置文本内容是否自适应大小
+                                                                                                                                                                            label.adjustsFontSizeToFitWidth = YES;
+                                                                                                                                                                          // 设置文本一行最多显示多少字
+                                                                                                                                                                                label.minimumScaleFactor = 10;
+                                                                                                                                                                        // 设置文字显示的基线位置
+                                                                                                                                                                                    label.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+
+
+                                                                                                                                                         // UIColor类的初始化方式，显示彩色
+                                                                                                                                                               UIColor *color = [[UIColor alloc]initWithRed:1 green:0.5 blue:0.5 alpha:1];
+                                                                                                                                                                  label.textColor= color;
+
+                                                                                                                                                             // 可以设置UILable控件的文本实现阴影效果。通过属性shadowColor设置阴影的颜色，使用属性shadowOffset设置阴影位置.注意shadowoffset的位置是一个CGsize
+                                                                                                                                                                                                  label.text = @"This is a UILabel";
+                                                                                                                                                                                                        label.shadowColor = [UIColor grayColor];
+                                                                                                                                                                                                             label.shadowOffset = CGSizeMake(3, 5);
+
+                                                                                                                                                         // 设置文本的highlight属性为YES ，通过highlightTextColor设置高亮文本的颜色（与按钮原理相同）
+                                                                                                                                                                          label.highlighted = YES;
+                                                                                                                                                                     label.highlightedTextColor = [UIColor orangeColor];// 就是文本在高亮状态下的颜色
+
+
